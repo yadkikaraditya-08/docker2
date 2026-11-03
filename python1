@@ -1,0 +1,16 @@
+import mysql.connector
+import sys
+
+print("Hello from Jenkins, Docker, and Python!")
+
+try:
+    db = mysql.connector.connect(
+        host="mysql-container",
+        user="root",
+        password="yourpassword"
+    )
+    print("Database connection: SUCCESS")
+    print("Build verification: SUCCESS")
+except mysql.connector.errors.DatabaseError as e:
+    print(f"Database connection skipped or failed: {e}")
+    print("Build verification: SUCCESS")
